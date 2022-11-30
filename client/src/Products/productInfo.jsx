@@ -89,8 +89,10 @@ const {data}=useQuery(PRODUCT,{
    
    dispatch(addCartProducts({id,type:true}));
    dispatch(addCounter({id,count}));
+   
   
   }
+
   const close=()=> {
 
     setId();
@@ -123,14 +125,14 @@ const {data}=useQuery(PRODUCT,{
       <div style={{fontSize:"1.1em", marginLeft:"1vw"}}><b>{data?.product.attributes[0]?.name}</b></div>
       
       {data?.product.attributes[0]&& 
-      (<SizeAttributes setSize={setSize}  id={id}/>)
+      (<SizeAttributes setSize={setSize} size={size}  id={id}/>)
        }
 
       {data?.product.attributes[1]?
       <div style={{fontSize:"1.1em", marginLeft:"1vw" }}><b>{data?.product.attributes[1].name}</b></div>:null}
 
       {data?.product.attributes[1]&&        
-      (<ColorAttributes setColor={setColor} id={id}/>)
+      (<ColorAttributes setColor={setColor} color={color} id={id}/>)
       }
       <p style={{fontSize:"1.1em" , marginLeft:"1vw"}}><b>Price</b></p>
       <p style={{fontSize:"1.2em" , marginLeft:"1vw"}}>
@@ -141,7 +143,7 @@ const {data}=useQuery(PRODUCT,{
       
       {type? <button className="btn lowOpacity" disabled>In the Cart</button> 
       :
-      <button style={{marginLeft:"1vw"}}className="btn" disabled={!size||!color||count<1} onClick={setPam}>
+      <button style={{marginLeft:"1vw"}}className="btn" disabled={!size||count<1} onClick={setPam}>
         ADD TO CART
       </button> }
       <div style={{marginTop:"3vh", marginLeft:"1vw" }} dangerouslySetInnerHTML={htmlDecode()}/>

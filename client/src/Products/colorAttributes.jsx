@@ -6,7 +6,7 @@ import "../Styles/styles.css";
 
 
 
-export const ColorAttributes=({id,setColor})=> {
+export const ColorAttributes=({id,setColor,color})=> {
 
     const ATTRIBUTES=gql`
     query Attributes ($id:String!) {
@@ -48,7 +48,7 @@ return (
      
     <Attribute key={attribute.id} color={data?.product.attributes[1].name} 
     attribute={attribute.value} setAttribute={setColor} 
-    currentAttribute={attribute.value}/>
+    currentAttribute={color}/>
  ))}
 
  </div>

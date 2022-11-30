@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Attribute } from "./attribute";
 import {useQuery,gql} from "@apollo/client";
 import "../Styles/styles.css";
@@ -7,7 +7,7 @@ import "../Styles/styles.css";
 
 
 
-export const SizeAttributes=({id,setSize})=> {
+export const SizeAttributes=({id,setSize,size})=> {
 
     const ATTRIBUTES=gql`
     query Attributes ($id:String!) {
@@ -48,7 +48,7 @@ return (
    {data?.product.attributes[0].items.map((attribute)=>(
      
     <Attribute  key={attribute.id} attribute={attribute.value}
-     setAttribute={setSize}  currentAttribute={attribute.value}
+     setAttribute={setSize}  currentAttribute={size}
      />
  ))}
 

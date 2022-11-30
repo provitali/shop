@@ -12,8 +12,8 @@ export const CartModal = () => {
  
   
   return isModalCart&&totalCount? (
-    <div className="testPageCartModalMask">
-      <div className="testPageCartModal">
+    <div className="PageCartModalMask">
+      <div className="PageCartModal">
       
         <p><b>My bag. </b>{totalCount} items</p>
         {productCart.map((product) => (

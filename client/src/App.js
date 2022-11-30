@@ -7,7 +7,7 @@ import MainPage from './MainPage';
 import {Cart}  from './Cart';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import { Navbar } from './Navbar';
-import {DisplayData} from "./DisplayData";
+
 
 
 
@@ -42,7 +42,6 @@ function App() {
       <Router>
         <Navbar/>
         <Routes>
-          <Route path="data" element={<DisplayData/>}/>
           <Route path="/" element={<MainPage setTotalCount={setTotalCount} />}/>
           <Route path="/cart" element={<Cart />}/>
         </Routes>
