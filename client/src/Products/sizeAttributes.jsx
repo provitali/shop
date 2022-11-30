@@ -7,7 +7,7 @@ import "../Styles/styles.css";
 
 
 
-export const SizeAttributes=({id,setSize,size})=> {
+export const SizeAttributes=({id,setSize,size,type})=> {
 
     const ATTRIBUTES=gql`
     query Attributes ($id:String!) {
@@ -47,7 +47,7 @@ return (
     <div className="sizeAttributes">
    {data?.product.attributes[0].items.map((attribute)=>(
      
-    <Attribute  key={attribute.id} attribute={attribute.value}
+    <Attribute type={type} key={attribute.id} attribute={attribute.value}
      setAttribute={setSize}  currentAttribute={size}
      />
  ))}

@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AppContext } from "../App";
 import { deleteCartProducts } from "../Features/cartProducts";
 import { deleteCounter } from "../Features/counters";
+import { SizeAttributes } from "./sizeAttributes";
 
 
 
@@ -14,7 +15,7 @@ import { deleteCounter } from "../Features/counters";
 
 export const CartItem=({product})=> {
 
-    const{name,amount,currency,image,sizes,id}=product;
+    const{name,brand,amount,currency,image,size,color,id,sizes,colors}=product;
     const{setTotalCount}=useContext(AppContext);
 
     const counterList=useSelector(state=>state.counters.value);
@@ -53,14 +54,17 @@ export const CartItem=({product})=> {
    <div className="cartItem">
    <div className="cartItemContainer">
    <div>{name}</div>
+   <div>{brand}</div>
    <div>
     <span>{currency}</span>
     <span>{amount}</span>
    </div>
-   {sizes && (
+  <SizeAttributes sizes={sizes}/>
+
+{colors && (
    <div> 
-    {sizes.map ((sizeItem) => (
-    <span key={sizeItem}>{sizeItem}</span>))}
+    {colors.map ((color) => (
+    <span key={color}>{color}</span>))}
     </div>
     
    )}

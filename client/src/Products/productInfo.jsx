@@ -31,10 +31,10 @@ export const ProductInfo = ({ id,setId,setTotalCount}) => {
    }
 
    attributes {
-    id
-    name
-    type
-    items {
+   id
+   name
+   type
+   items {
       displayValue
       value
       id
@@ -66,8 +66,6 @@ const {data}=useQuery(PRODUCT,{
   const [color, setColor] = useState();
   const [size, setSize] = useState();
 
-  console.log(color);
-  console.log(size);
 
   const type=typeStatus?typeStatus.type:false;
 
@@ -83,11 +81,19 @@ const {data}=useQuery(PRODUCT,{
   const countSum=counterList.reduce((sum,object)=>sum+object.count,0);
   useEffect(()=>{setTotalCount(countSum)},[countSum,setTotalCount])
   
+  const name=data?.product.name;
+  const brand=data?.product.brand;
+  const price=data?.product.prices[0].amount;
+  const symbol=data?.product.prices[0].currency.symbol;
+  const image=data?.product.gallery[0];
+  const sizes=data?.product?.attributes[0]?.items.map(obj=>obj.value);
+  const colors=data?.product?.attributes[1]?.items.map(obj=>obj.value);
+  
 
   const setPam=()=> {
 
    
-   dispatch(addCartProducts({id,type:true}));
+   dispatch(addCartProducts({id,name,brand,price,symbol,image,color,size,sizes,colors,type:true}));
    dispatch(addCounter({id,count}));
    
   
@@ -122,17 +128,17 @@ const {data}=useQuery(PRODUCT,{
       <div className="productInfoContainer">
       <div style={{fontSize:"1.5em", marginLeft:"1vw"}}>{data?.product.name}</div>
       <p style={{fontSize:"1.2em" , marginLeft:"1vw"}}>{data?.product.brand}</p>
-      <div style={{fontSize:"1.1em", marginLeft:"1vw"}}><b>{data?.product.attributes[0]?.name}</b></div>
+      <div style={{fontSize:"1.1em", marginLeft:"1vw"}}><b>{data?.product?.attributes[0]?.name}</b></div>
       
       {data?.product.attributes[0]&& 
-      (<SizeAttributes setSize={setSize} size={size}  id={id}/>)
+      (<SizeAttributes setSize={setSize} size={size} type={type} id={id}/>)
        }
 
       {data?.product.attributes[1]?
-      <div style={{fontSize:"1.1em", marginLeft:"1vw" }}><b>{data?.product.attributes[1].name}</b></div>:null}
+      <div style={{fontSize:"1.1em", marginLeft:"1vw" }}><b>{data?.product?.attributes[1]?.name}</b></div>:null}
 
       {data?.product.attributes[1]&&        
-      (<ColorAttributes setColor={setColor} color={color} id={id}/>)
+      (<ColorAttributes setColor={setColor} color={color} type={type} id={id}/>)
       }
       <p style={{fontSize:"1.1em" , marginLeft:"1vw"}}><b>Price</b></p>
       <p style={{fontSize:"1.2em" , marginLeft:"1vw"}}>

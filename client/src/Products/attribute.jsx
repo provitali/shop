@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 
 
-export const Attribute =({attribute,setAttribute,color,currentAttribute})=> {
+export const Attribute =({attribute,setAttribute,color,currentAttribute,type})=> {
     
    console.log(currentAttribute);
     
@@ -14,7 +14,7 @@ export const Attribute =({attribute,setAttribute,color,currentAttribute})=> {
     
    
     <button  className={cn("attribute", {"attributeActive": attribute === currentAttribute})}
-     style={{backgroundColor:`${color?attribute:null}`}}
+     style={{backgroundColor:`${color?attribute:null}`}} disabled={type}
        onClick={() => setAttribute(attribute)} >{color?null:attribute}</button>
 )
 

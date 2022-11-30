@@ -10,6 +10,7 @@ export const CartModal = () => {
   const{isModalCart,totalCount}=useContext(AppContext);
   const productCart=useSelector(state=>state.cartproducts.value);
  
+  console.log(productCart);
   
   return isModalCart&&totalCount? (
     <div className="PageCartModalMask">
