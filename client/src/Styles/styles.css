@@ -182,11 +182,11 @@ margin-bottom: 5%;
 }
 
 .btn {
-  width: 100px;
-  height: 30px;
-  background-color: aquamarine;
+  width: 80%;
+  height: 5vh;
+  background-color: rgba(0, 0, 255, 0.656);
   color: white;
-  border-radius: 10%;
+  
   
 }
 
@@ -206,7 +206,7 @@ margin-bottom: 5%;
   float: left;
   width:500px;
   height:400px;
-  margin-left: 30%;
+  margin-left: 20%;
   margin-top: 0px;
  }
 
@@ -238,7 +238,7 @@ margin-bottom: 5%;
   float:right;
   width: 300px;
   height: 500px;
-  margin-right: 50px;
+  margin-right: 10%;
   border: 2px dotted black;
 
  }
@@ -307,4 +307,15 @@ margin-bottom: 5%;
  .stock {text-align: center;
          font-size:xx-large;}
 
- 
+
+  
+  .attribute {width:30px;
+              height: 30px;
+            margin:10px;
+          background-color: aliceblue;}
+
+  .sizeAttributes .attribute{width: 50px;}
+
+  .sizeAttributes .colorAttributes {margin-left:-15vw;}
+
+  .attributeActive { border:2px solid black;}

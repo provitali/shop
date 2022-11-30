@@ -6,6 +6,8 @@ import { addCounter } from "../Features/counters";
 import { addCartProducts } from "../Features/cartProducts";
 import { useEffect } from "react";
 import {useQuery,gql} from "@apollo/client";
+import { SizeAttributes } from "./sizeAttributes";
+import { ColorAttributes } from "./colorAttributes";
 
 
 
@@ -28,6 +30,18 @@ export const ProductInfo = ({ id,setId,setTotalCount}) => {
 
    }
 
+   attributes {
+    id
+    name
+    type
+    items {
+      displayValue
+      value
+      id
+    }
+    
+  }
+
     }
 
  }
@@ -49,8 +63,12 @@ const {data}=useQuery(PRODUCT,{
   const typeStatusArray=cartProducts.filter(product=>product.id===id);
   const typeStatus=typeStatusArray.pop();
  
-
+  const [color, setColor] = useState();
   const [size, setSize] = useState();
+
+  console.log(color);
+  console.log(size);
+
   const type=typeStatus?typeStatus.type:false;
 
 
@@ -81,6 +99,9 @@ const {data}=useQuery(PRODUCT,{
 
   }
 
+  const htmlDecode=()=>{
+   return {__html:data?.product.description}
+  }
 
 
   return (
@@ -97,18 +118,33 @@ const {data}=useQuery(PRODUCT,{
       </div>
       
       <div className="productInfoContainer">
-      <div>{}</div>
-               <div>
-               <span>{data?.product.prices[0].amount}</span> 
-               <span>{data?.product.prices[0].currency.symbol}</span>
-               </div>
-        
+      <div style={{fontSize:"1.5em", marginLeft:"1vw"}}>{data?.product.name}</div>
+      <p style={{fontSize:"1.2em" , marginLeft:"1vw"}}>{data?.product.brand}</p>
+      <div style={{fontSize:"1.1em", marginLeft:"1vw"}}><b>{data?.product.attributes[0]?.name}</b></div>
+      
+      {data?.product.attributes[0]&& 
+      (<SizeAttributes setSize={setSize}  id={id}/>)
+       }
+
+      {data?.product.attributes[1]?
+      <div style={{fontSize:"1.1em", marginLeft:"1vw" }}><b>{data?.product.attributes[1].name}</b></div>:null}
+
+      {data?.product.attributes[1]&&        
+      (<ColorAttributes setColor={setColor} id={id}/>)
+      }
+      <p style={{fontSize:"1.1em" , marginLeft:"1vw"}}><b>Price</b></p>
+      <p style={{fontSize:"1.2em" , marginLeft:"1vw"}}>
+      <span><b>{data?.product.prices[0].currency.symbol}</b></span> 
+      <span><b>{data?.product.prices[0].amount}</b></span> 
+      
+      </p>
+      
       {type? <button className="btn lowOpacity" disabled>In the Cart</button> 
       :
-      <button className="btn" disabled={!size||count<1} onClick={setPam}>
+      <button style={{marginLeft:"1vw"}}className="btn" disabled={!size||!color||count<1} onClick={setPam}>
         ADD TO CART
       </button> }
-      <div>{data?.product.description}</div>
+      <div style={{marginTop:"3vh", marginLeft:"1vw" }} dangerouslySetInnerHTML={htmlDecode()}/>
       </div>
     </div>
   );
