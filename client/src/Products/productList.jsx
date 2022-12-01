@@ -5,13 +5,19 @@ import {useQuery,gql} from "@apollo/client";
 import { useContext } from 'react';
 import { AppContext } from '../App';
 
+import { useEffect } from 'react';
 
 
 
-export const ProductList = ({setId}) => {
+
+export const ProductList = ({setId,setProducts,filtered}) => {
     
     const {tab}=useContext(AppContext);
-    console.log(tab);
+    
+    
+     
+    
+
 
     const PRODUCTS=gql`
     query Products($title:String!) {
@@ -48,12 +54,13 @@ export const ProductList = ({setId}) => {
           title: tab
         },
       });
-    console.log(data);
+    useEffect(()=>{setProducts(data?.category.products)},[data,setProducts]);
   
 
     return (
         <div className="PageProducts">
-            {data?.category.products.map(product => (
+        
+            {filtered?.map(product => (
                 <Product  key={product.id}
                  product={product} 
                  setId={setId}  />
