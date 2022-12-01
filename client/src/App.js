@@ -24,7 +24,7 @@ function App() {
   const [isModalCart, setIsModalCart] = useState(false);
   const [tab, setTab] = useState("all");
   const [totalCount,setTotalCount]=useState(0);
-  console.log(tab);
+ 
  
 
   const client=new ApolloClient({

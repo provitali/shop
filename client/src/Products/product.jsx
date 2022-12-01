@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 export const Product = ({product, setId}) => {
     const {name, gallery,inStock,id,brand,prices} = product;
     
-    console.log(id);
+    
    
     const [count,setCount]=useState(0);
     

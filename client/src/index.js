@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import countersReducer from './Features/counters';
 import cartproductsReducer from './Features/cartProducts';
-import countsumReducer from './Features/countSum';
+
 
 
 
@@ -15,7 +15,7 @@ const store=configureStore({
   reducer:{
     counters:countersReducer,
     cartproducts:cartproductsReducer,
-    countsum:countsumReducer,
+    
 
 
 

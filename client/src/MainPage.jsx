@@ -1,10 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { ProductInfo } from "./Products/productInfo";
 import { ProductList } from "./Products/productList";
 import "./Styles/styles.css";
-import { AppContext } from "./App";
 import { CartModal } from "./Products/cartModal";
-import cn from "classnames";
+
 
 
 
@@ -17,7 +16,6 @@ const MainPage = ({setTotalCount}) => {
  
   
   const [id, setId] = useState();
-  const {tab}=useContext(AppContext);
   const[search,setSearch]=useState("");
   const [products,setProducts]=useState();
    
@@ -37,8 +35,6 @@ const MainPage = ({setTotalCount}) => {
     <div className="Page">
       <input  placeholder="Filter items..." onChange={(event)=>{setSearch(event.target.value);}}/>
       <div className="PageContent">
-      <div className={cn("categoryName",{"hidden":id})}>{tab}</div>
-      
       <CartModal/>
       {getComponent()}
       </div>

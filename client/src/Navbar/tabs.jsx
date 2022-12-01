@@ -27,7 +27,7 @@ export const Tabs = () => {
    const {setTab,tab}=useContext(AppContext);
    
    const {data}=useQuery(CATEGORIES);
-    console.log(data);
+    
   
 
     return(
