@@ -204,6 +204,7 @@
   
   width: 50%;
   margin-left: 30%;
+  margin-bottom: 10%;
 }
 
   .btnCart {width:150px;
@@ -320,17 +321,17 @@
   
   .attribute {width:30px;
               height: 30px;
-            margin:10px;
+            margin:3px;
           background-color: aliceblue;}
 
   .sizeAttributes .attribute{width: 50px;}
 
   .sizeAttributes .colorAttributes {margin-left:-15vw;}
 
-  .attributeActive { border:4px solid black;}
+  .attributeActive { border:3px solid black;}
 
   .cartItemContainer .attribute {
-    width:30px;
+    width:50px;
     background-color: aliceblue;}
 
   @media only screen and (max-width: 1300px) {
@@ -368,14 +369,32 @@
 
           @media only screen and (max-width: 800px) {
             .PageProductInfo .imageContainer{
+            width: 80%;
             margin-left: 10px;
-            height: 40vh;
+            height: 30vh;
                            }
               }
     
          @media only screen and (max-width: 800px) {
-            .PageProductInfo .productInfoContainer{
-            transform: scale(0.5);
+            .PageProductInfo .productInfoContainer {
+            transform: scale(0.7);
+            
            
                            }
               }
+
+              @media only screen and (max-width: 800px) {
+                .close,.attribute {
+                transform: scale(0.8);
+                
+               
+                               }
+                  }
+
+             @media only screen and (max-width: 800px) {
+                    .PageCartModal {
+                    width: fit-content;
+                    
+                   
+                                   }
+                      }
