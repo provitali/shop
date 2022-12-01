@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import '../Styles/styles.css';
 
 
 

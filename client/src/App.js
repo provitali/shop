@@ -20,7 +20,7 @@ export const AppContext=createContext();
 function App() {
 
 
-
+  
   const [isModalCart, setIsModalCart] = useState(false);
   const [tab, setTab] = useState("all");
   const [totalCount,setTotalCount]=useState(0);
@@ -43,7 +43,7 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={<MainPage setTotalCount={setTotalCount} />}/>
-          <Route path="/cart" element={<Cart />}/>
+          <Route path="/cart" element={<Cart totalCount={totalCount} />}/>
         </Routes>
       </Router>
     </AppContext.Provider>

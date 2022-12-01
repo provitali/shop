@@ -57,7 +57,7 @@ const {data}=useQuery(PRODUCT,{
 });
      
   
- console.log(data);
+ 
   
   const cartProducts=useSelector(state=>state.cartproducts.value);
   const typeStatusArray=cartProducts.filter(product=>product.id===id);
@@ -65,8 +65,8 @@ const {data}=useQuery(PRODUCT,{
  
   const [color, setColor] = useState();
   const [size, setSize] = useState();
-
-
+  const[amount,setAmount]=useState(0);
+  
   const type=typeStatus?typeStatus.type:false;
 
 
@@ -79,6 +79,7 @@ const {data}=useQuery(PRODUCT,{
   
   const counterList=useSelector(state=>state.counters.value);
   const countSum=counterList.reduce((sum,object)=>sum+object.count,0);
+  
   useEffect(()=>{setTotalCount(countSum)},[countSum,setTotalCount])
   
   const name=data?.product.name;
@@ -88,12 +89,12 @@ const {data}=useQuery(PRODUCT,{
   const image=data?.product.gallery[0];
   const sizes=data?.product?.attributes[0]?.items.map(obj=>obj.value);
   const colors=data?.product?.attributes[1]?.items.map(obj=>obj.value);
-  
+  useEffect(()=>{setAmount(price*count)},[count,price]);
 
   const setPam=()=> {
 
    
-   dispatch(addCartProducts({id,name,brand,price,symbol,image,color,size,sizes,colors,type:true}));
+   dispatch(addCartProducts({id,name,brand,price,symbol,image,color,size,sizes,colors,amount,type:true}));
    dispatch(addCounter({id,count}));
    
   
