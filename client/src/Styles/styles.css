@@ -356,3 +356,26 @@
        grid-template-columns: 1fr ;
                              }
       }
+
+      @media only screen and (max-width: 1300px) {
+        .PageProductInfo .imageContainer{
+        margin-left: 10px;
+      
+                       }
+          }
+
+    
+
+          @media only screen and (max-width: 800px) {
+            .PageProductInfo .imageContainer{
+            margin-left: 10px;
+            height: 40vh;
+                           }
+              }
+    
+         @media only screen and (max-width: 800px) {
+            .PageProductInfo .productInfoContainer{
+            transform: scale(0.5);
+           
+                           }
+              }
